@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ledgerline — Budget Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkxlZGdlcmxpbmUgXHUyMDE0IEJ1ZGdldCBDYWxlbmRhciIsICJzaG9ydF9uYW1lIjogIkxlZGdlcmxpbmUiLCAiZGVzY3JpcHRpb24iOiAiQSBjYWxlbmRhci1maXJzdCBidWRnZXRpbmcgYXBwIGZvciBwZXJzb25hbCBhbmQgYnVzaW5lc3MgY2FzaGZsb3cuIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNFQ0VGRTgiLCAidGhlbWVfY29sb3IiOiAiIzFGOEE3MCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFDazBsRVFWUjRuTzNiTVU2RVVCUkFVY2RZMmR2WXVTSzM0bExjaXB1enRyQ1pRbzF5UCtCTHppa25tZUVIYmw2QWdjdkQ0OU1OYkhWNzlnS1lUVUFrQWlJUkVJbUFTQVJFSWlBU0FaRUlpRVJBSkFJaUVSQ0pnRWdFUkNJZ0VnR1JDSWhFUUNRQ0loRVFpWUJJQkVRaUlKSzdzeGRBZGYveS9PWG43Njl2QjJ6OTRzWEN1YjVMNTlyZUdRbG9wTitrYzIyL2pKd0R6ZlBYZXJaOTVaY0VOTXptRkhacVNFQ1R4QWoyYUVoQVl5dzUvTXNiRWhDSmdHWllPRG5XRGlFQmtRaG9nT1VuTGd0L1VFQWtBaUlSRUltQVNBUkVJaUFTQVpHYy9EelFIbi92SGZNazNzSFc3cWlGdThnRUloSFFEQXRueHRvSkxTQVNBWTJ4WkhJc1AwRVUwQ1R4OE85eGVTR2dZVFpIc05QRnFZRG0yWkRDZnJjMnZKazYwbWNRLytIRlFnRU45bk5HeDl4UUZkQjQ1OTU1ZHc1RUlpQVNBWkVJaUVSQUpBSWlFUkNKZ0VnRVJDSWdFZ0dSQ0loRVFDUUNJaEVRaVlCSUJFUWlJQklCa1FpSVJFQWtBaUlSRUltQVNBUkVJaUFTQVpFSWlFUkFKQUlpRVJDSmdFZ0VSQ0lnRWdHUkNJaEVRQ1FDSWhFUWlZQklCRVFpSUJJQmtRaUlSRUFrQWlJUkVJbUFTQVJFSWlBU0FaRUlpRVJBSkFJaUVSQ0pnRWdFUkNJZ0VnR1JDSWhFUUNRQ0loRVFpWUJJQkVRaUlCSUJrUWlJUkVBa2QyY3ZZTDM3bCtlemwzQ285OWUzRTdkdUFwRUlpRVJBSkFJaUVSQ0pnRWdFUkNJZ0VnR1JDSWhFUUNRQ0loRVFpWUJJQkVRaUlCSUJrUWlJUkVBa0FpSVJFSW1BU0FSRUlpQVNBWkVJaUVSQUpKZUh4NmV6MThCZ0poQ0pnRWdFUkNJZ0VnR1JDSWhFUUNRQ0loRVFpWUJJQkVRaUlCSUJrUWlJUkVBa0FpSVJFSW1BU0FSRUlpQVNBWkVJaUVSQUpBSWlFUkNKZ0VnRVJDSWdFZ0dSQ0loRVFDUUNJaEVRaVlCSUJFUWlJQklCa1FpSVJFQWtBaUlSRU1rSHpJbEJUWFFjTGE0QUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFJcEVsRVFWUjRuTzNkTVU0Y1N4UkEwY0VpY2s1Q3hvcThGUytGcmJBNVlnZnpoUkI4alRFejNWWFY5NXdZaVZjQjcxYjNJTGg3ZUh3NkFkRHpZL1FBQUl3aEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVZmVqQndENHBwKy9mMTMrZ3RmbmwzMG1XZFRkdytQVDZCa0F2dVN2Ry84eVBmaEFBSURaWGJuM1AxT0NNd0VBNW5YejFmK2VEQWdBTUtOTlYvOTc1UXdJQURDWDNWYi9lODBNK0RWUVlDSkR0di9BN3p1V0FBQ3pHTHVGZ3czd0NnZ1liNnJsMjNrZDVBa0FHR3lxN1grYWI1N3RDQUF3MHB6YmRzNnBiazRBZ0dGbTNyTXp6M1lyQWdDTU1mK0duWC9DS3drQU1NQXF1M1dWT2I5SEFBQ2lCQURZMjFyWDZyV20vU2NDQU94cXhYMjY0c3hmSVFEQWZ0YmRwT3RPZm9FQUFFUUpBTENUMVMvUnE4Ly9tUUFBUkFrQXNJZGpYSitQY1lvM0FnQVFKUURBNW81MGNUN1NXUVFBSUVvQUFLSUVBTmpXa2Q2Wm5CM21SQUlBRUNVQUFGRUNBQkFsQUFCUkFnQnM2RENmbDM1d2pITUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FzS0hYNTVmUkkyemlHT2NTQUlBb0FRQ0lFZ0NBS0FFQWlMcDdlSHdhUGNPaEhPT3ZoUCt2WTN6cXhSQUgrN2s0ek0rQ0p3Q0FLQUVBaUJJQVlIT0hlV2R5T3RaWkJBQWdTZ0NBUFJ6ajRueU1VN3dSQUlBb0FRQjJzdnIxZWZYNVB4TUFnQ2dCQVBhejdpVjYzY2t2RUFCZ1Z5dHUwaFZuL2dvQkFQYTIxajVkYTlwL0lnQUFVUUlBRExES3RYcVZPYjlIQUlBeDV0K3Q4MDk0SlFFQWhwbDV3ODQ4MjYwSUFERFNuSHQyenFsdVRnQ0F3V2JidHJQTnM1MzcwUU1BL0xkemgvL2pzTTdxUC9NRUFNeGk3UDZ0YmYrVEFBQlRHYldGZzl2LzVCVVFNSnVkWHdjMVYvK1pBQUF6MmlFRDVkVi9KZ0RBdkRiS2dOVi9KZ0RBN043MjlaVWxzUGMvRUFCZ0dSODIrRjk3WU9OZkpnREFxdXozSy9rMVVJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSXVoODlBTXY0K2Z2WDZCR29lMzErR1QzQ29YZ0NBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdLaTdoOGVuMFRNQU1JQW5BSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FxRC9sS0p2dER6aFNLZ0FBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACYElEQVR4nO3bMU7DMBiAUYqY2FnYeiKuwlG4Si/XmQGJgfJJUXBqI703IkSt+utvEsjp5fX8AL95nL0A1iUOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQO0tPsBbDJ8/vbj69cPy5Hv+jJcysru23i1nGVOFbWtaWM7d+2g8mxon37PXyEmBzL2T0Jho8QcZDEsZY/fvrHDg9xLGTI1g7sQxwkcZDEsYqBx8GoHyUOkjhI4iCJgyQO0pw/vI29kXeH/2y4j1Fvy6g3xOQgiYMkjoUMOQ4GHrLiWMsft3bsr1/iIIljObs//cOv2jyasKKvbd5+ZXvQxbzJsa6NW37cbR6TY2nfGz/loSZx/A9T7gI7VkjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEhPsxcwwPP72+wlHO76cbn/i5ocJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcpNPL63n2GliUyUESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB+kTDsQ7NZEk4qIAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACYElEQVR4nO3bMU7DMBiAUYqY2FnYeiKuwlG4Si/XmQGJgfJJUXBqI703IkSt+utvEsjp5fX8AL95nL0A1iUOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQO0tPsBbDJ8/vbj69cPy5Hv+jJcysru23i1nGVOFbWtaWM7d+2g8mxon37PXyEmBzL2T0Jho8QcZDEsZY/fvrHDg9xLGTI1g7sQxwkcZDEsYqBx8GoHyUOkjhI4iCJgyQO0pw/vI29kXeH/2y4j1Fvy6g3xOQgiYMkjoUMOQ4GHrLiWMsft3bsr1/iIIljObs//cOv2jyasKKvbd5+ZXvQxbzJsa6NW37cbR6TY2nfGz/loSZx/A9T7gI7VkjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEhPsxcwwPP72+wlHO76cbn/i5ocJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcpNPL63n2GliUyUESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB+kTDsQ7NZEk4qIAAAAASUVORK5CYII=">
+<meta name="theme-color" content="#1F8A70">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ledgerline">
+<style>
+  :root{
+    --ink:#151A21;
+    --ink-2:#1E2530;
+    --paper:#ECEFE8;
+    --card:#FFFFFF;
+    --line:#D9DCD2;
+    --line-strong:#C3C7BA;
+    --text:#1D2229;
+    --text-muted:#6B7280;
+    --text-faint:#9AA0A8;
+
+    --personal:#1F8A70;
+    --personal-dark:#12604D;
+    --personal-tint:#E3F2EC;
+
+    --business:#3A5BA0;
+    --business-dark:#26407A;
+    --business-tint:#E5EBF6;
+
+    --alert:#C1443C;
+    --alert-tint:#F8E4E2;
+    --gold:#B98A2E;
+    --gold-tint:#F5EBD8;
+
+    --accent: var(--personal);
+    --accent-dark: var(--personal-dark);
+    --accent-tint: var(--personal-tint);
+
+    --radius: 10px;
+    --shadow: 0 1px 2px rgba(21,26,33,0.06), 0 8px 24px rgba(21,26,33,0.06);
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body[data-mode="business"]{ --accent:var(--business); --accent-dark:var(--business-dark); --accent-tint:var(--business-tint); }
+
+  .num{ font-family:'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+
+  ::selection{ background: var(--accent-tint); }
+
+  button{ font-family:inherit; cursor:pointer; }
+  input,select,textarea{ font-family:inherit; }
+
+  /* ---------- App shell ---------- */
+  #app{ max-width:1180px; margin:0 auto; padding:0 20px 80px; }
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 0 18px; flex-wrap:wrap; gap:14px;
+  }
+  .brand{ display:flex; align-items:baseline; gap:10px; }
+  .brand-mark{
+    font-family:'Fraunces', serif; font-weight:600; font-size:26px; letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .brand-mark span{ color:var(--accent); transition:color .25s; }
+  .brand-sub{ font-size:12px; color:var(--text-muted); letter-spacing:.04em; text-transform:uppercase; }
+
+  .mode-toggle{
+    display:flex; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px;
+    box-shadow:var(--shadow);
+  }
+  .mode-toggle button{
+    border:none; background:transparent; padding:8px 18px; border-radius:999px; font-size:13px; font-weight:600;
+    color:var(--text-muted); letter-spacing:.02em; transition:all .2s;
+  }
+  .mode-toggle button.active{ background:var(--accent); color:#fff; }
+
+  .tabs{
+    display:flex; gap:4px; border-bottom:1px solid var(--line); margin-bottom:22px;
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{ display:none; }
+  .tab-btn{
+    border:none; background:transparent; padding:10px 16px; font-size:14px; font-weight:600; color:var(--text-muted);
+    border-bottom:2px solid transparent; margin-bottom:-1px; transition:all .15s; white-space:nowrap; flex-shrink:0;
+  }
+  .tab-btn.active{ color:var(--accent-dark); border-bottom-color:var(--accent); }
+  .tab-btn:hover{ color:var(--text); }
+
+  /* ---------- status filter + install button ---------- */
+  .toolbar-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  .status-filter{
+    display:flex; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; box-shadow:var(--shadow);
+  }
+  .status-filter button{
+    border:none; background:transparent; padding:6px 13px; border-radius:999px; font-size:12px; font-weight:600; color:var(--text-muted);
+  }
+  .status-filter button.active{ background:var(--ink); color:#fff; }
+  .install-btn{
+    display:inline-flex; align-items:center; gap:7px; background:var(--card); border:1px solid var(--line);
+    border-radius:999px; padding:7px 14px; font-size:12.5px; font-weight:700; color:var(--text); box-shadow:var(--shadow);
+  }
+  .install-btn:hover{ border-color:var(--accent); color:var(--accent-dark); }
+
+  .view{ display:none; }
+  .view.active{ display:block; animation:fadein .2s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+
+  /* ---------- Alert banner ---------- */
+  .banner{
+    display:flex; align-items:center; gap:10px;
+    background:var(--alert-tint); border:1px solid #E8B9B4; color:#7A2A24;
+    padding:12px 16px; border-radius:var(--radius); font-size:13.5px; margin-bottom:18px;
+  }
+  .banner b{ font-weight:700; }
+  .banner .dot{ width:8px; height:8px; border-radius:50%; background:var(--alert); flex-shrink:0; }
+
+  /* ---------- Calendar layout ---------- */
+  .cal-layout{ display:grid; grid-template-columns: 1fr 300px; gap:18px; align-items:start; }
+  @media (max-width: 900px){ .cal-layout{ grid-template-columns: 1fr; } }
+
+  .cal-header{
+    display:flex; align-items:center; justify-content:space-between; padding:16px 18px 10px;
+  }
+  .month-nav{ display:flex; align-items:center; gap:10px; }
+  .month-nav button{
+    width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--card);
+    color:var(--text); font-size:15px; display:flex; align-items:center; justify-content:center;
+  }
+  .month-nav button:hover{ background:var(--paper); }
+  .month-label{ font-family:'Fraunces', serif; font-size:20px; font-weight:600; min-width:180px; text-align:center; }
+  .today-btn{
+    border:1px solid var(--line); background:var(--card); border-radius:8px; padding:6px 12px; font-size:12.5px; font-weight:600; color:var(--text-muted);
+  }
+  .today-btn:hover{ color:var(--text); background:var(--paper); }
+
+  .weekday-row{ display:grid; grid-template-columns:repeat(7,1fr); padding:0 8px; }
+  .weekday-row div{
+    text-align:center; font-size:11px; font-weight:700; letter-spacing:.06em; color:var(--text-faint);
+    text-transform:uppercase; padding:6px 0;
+  }
+
+  .cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; padding:6px 8px 14px; }
+  .day-cell{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; min-height:92px;
+    padding:7px 8px; display:flex; flex-direction:column; gap:5px; cursor:pointer; position:relative;
+    transition:border-color .15s, transform .1s;
+  }
+  .day-cell:hover{ border-color:var(--accent); }
+  .day-cell.outside{ opacity:.35; }
+  .day-cell.today{ border-color:var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .day-cell.negative-day{ background: var(--alert-tint); }
+  .day-num{ font-size:12.5px; font-weight:600; color:var(--text-muted); }
+  .day-cell.today .day-num{ color:var(--accent-dark); }
+  .day-amounts{ display:flex; flex-direction:column; gap:2px; margin-top:auto; }
+  .amt-pill{ font-size:10.5px; font-weight:600; padding:1.5px 5px; border-radius:4px; width:fit-content; }
+  .amt-rev{ background:var(--accent-tint); color:var(--accent-dark); }
+  .amt-exp{ background:var(--alert-tint); color:#8C332C; }
+  .day-net{ font-size:10px; color:var(--text-faint); margin-top:1px; }
+  .day-net.neg{ color:var(--alert); font-weight:700; }
+  .amt-pill.planned{ background:transparent; border:1.5px dashed currentColor; }
+
+  /* ---------- Weekly ledger sidebar ---------- */
+  .week-panel-title{ font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); padding:16px 18px 6px; }
+  .week-panel-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding-right:14px; }
+  .week-panel-head .week-panel-title{ padding-right:0; }
+  .week-panel-sub{ font-size:11.5px; color:var(--text-faint); padding:0 18px 8px; }
+  .week-start-select{
+    font-size:11px; font-weight:600; color:var(--text-muted); border:1px solid var(--line); border-radius:6px;
+    padding:4px 6px; background:var(--card);
+  }
+  .week-row{
+    padding:12px 18px; border-top:1px solid var(--line); position:relative;
+  }
+  .week-row:first-of-type{ border-top:none; }
+  .week-row.neg{ background:var(--alert-tint); }
+  .week-row-top{ display:flex; align-items:center; justify-content:space-between; cursor:pointer; }
+  .week-range{ font-size:12px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:6px; }
+  .week-range .warn{ color:var(--alert); font-size:12px; }
+  .week-chevron{ font-size:11px; color:var(--text-faint); transition:transform .15s; flex-shrink:0; }
+  .week-chevron.open{ transform:rotate(180deg); }
+  .week-carry{ font-size:10.5px; color:var(--text-faint); margin-top:4px; }
+  .week-carry .num{ font-weight:700; color:var(--text-muted); }
+  .week-nums{ display:flex; justify-content:space-between; margin-top:6px; font-size:12px; }
+  .week-nums .lbl{ color:var(--text-faint); font-size:10px; text-transform:uppercase; letter-spacing:.04em; display:block; }
+  .week-nums .val{ font-weight:700; }
+  .week-thread{ width:100%; height:22px; margin-top:8px; display:block; }
+  .week-balance{ font-size:12.5px; margin-top:6px; font-weight:700; }
+  .week-balance.neg{ color:var(--alert); }
+  .week-balance.pos{ color:var(--accent-dark); }
+  .week-endbal{
+    font-size:11.5px; margin-top:6px; padding-top:8px; border-top:1px dashed var(--line-strong);
+    color:var(--text-muted); font-weight:600;
+  }
+  .week-endbal .num{ font-weight:800; color:var(--ink); }
+  .week-endbal.neg{ color:var(--alert); }
+  .week-endbal.neg .num{ color:var(--alert); }
+  .week-detail{ max-height:0; overflow:hidden; transition:max-height .2s ease; }
+  .week-detail.open{ max-height:400px; margin-top:8px; }
+  .week-detail-title{ font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--text-faint); margin:8px 0 3px; }
+  .week-detail-title:first-child{ margin-top:2px; }
+  .week-detail-row{ display:flex; justify-content:space-between; font-size:12px; padding:3px 0; }
+
+  /* ---------- Dashboard ---------- */
+  .stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:18px; }
+  @media (max-width:700px){ .stat-grid{ grid-template-columns:1fr; } }
+  .stat-card{ padding:18px 20px; }
+  .stat-lbl{ font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:8px; }
+  .stat-val{ font-family:'Fraunces', serif; font-size:28px; font-weight:600; }
+  .stat-val.rev{ color:var(--accent-dark); }
+  .stat-val.exp{ color:#8C332C; }
+  .stat-val.net.pos{ color:var(--accent-dark); }
+  .stat-val.net.neg{ color:var(--alert); }
+  .stat-sub{ font-size:11.5px; color:var(--text-faint); margin-top:4px; }
+
+  .panel-title{ font-family:'Fraunces', serif; font-size:16px; font-weight:600; padding:16px 18px 2px; }
+  .panel-sub{ font-size:12px; color:var(--text-muted); padding:0 18px 12px; }
+
+  .bar-row{ display:flex; align-items:center; gap:10px; padding:8px 18px; }
+  .bar-row .name{ width:130px; font-size:12.5px; font-weight:600; flex-shrink:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .bar-track{ flex:1; height:8px; background:var(--paper); border-radius:5px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:5px; }
+  .bar-fill.rev{ background:var(--accent); }
+  .bar-fill.exp{ background:var(--alert); opacity:.55; }
+  .bar-fill.exp.over{ opacity:1; }
+  .bar-amt{ width:96px; text-align:right; font-size:12px; font-weight:700; flex-shrink:0; }
+  .bar-amt .budget-of{ font-weight:500; color:var(--text-faint); }
+  .bar-amt.over-budget{ color:var(--alert); }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px; }
+  @media (max-width:800px){ .two-col{ grid-template-columns:1fr; } }
+
+  table.week-table{ width:100%; border-collapse:collapse; font-size:13px; min-width:620px; }
+  table.week-table th{ text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); padding:8px 18px; border-bottom:1px solid var(--line); }
+  table.week-table td{ padding:9px 18px; border-bottom:1px solid var(--line); }
+  table.week-table tr:last-child td{ border-bottom:none; }
+  table.week-table td.right, table.week-table th.right{ text-align:right; }
+  table.week-table tr.neg td{ background:var(--alert-tint); }
+
+  /* ---------- Projection view ---------- */
+  .proj-table-wrap{ overflow-x:auto; }
+  table.proj-table{ width:100%; border-collapse:collapse; font-size:13px; min-width:640px; }
+  table.proj-table th{ text-align:right; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); padding:10px 16px; border-bottom:1px solid var(--line); }
+  table.proj-table th:first-child, table.proj-table td:first-child{ text-align:left; }
+  table.proj-table td{ text-align:right; padding:10px 16px; border-bottom:1px solid var(--line); }
+  table.proj-table tr:hover td{ background:var(--paper); }
+  table.proj-table td.neg{ color:var(--alert); font-weight:700; }
+  table.proj-table td.pos{ color:var(--accent-dark); }
+
+  .settings-row{ display:flex; align-items:center; gap:10px; padding:12px 18px; flex-wrap:wrap; }
+  .settings-row label{ font-size:12.5px; font-weight:600; color:var(--text-muted); }
+  .settings-row input[type=number]{
+    width:130px; padding:7px 9px; border:1px solid var(--line); border-radius:7px; font-size:13px;
+  }
+
+  /* ---------- Expert insight (business) ---------- */
+  .insight-box{ padding:16px 18px; }
+  .insight-metrics{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0 16px; }
+  .metric{ background:var(--paper); border-radius:8px; padding:10px 12px; }
+  .metric .m-lbl{ font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--text-faint); font-weight:700; }
+  .metric .m-val{ font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:600; margin-top:3px; }
+  .ai-btn{
+    background:var(--business); color:#fff; border:none; padding:10px 16px; border-radius:8px; font-size:13px; font-weight:700;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .ai-btn:hover{ background:var(--business-dark); }
+  .ai-btn:disabled{ opacity:.6; cursor:default; }
+  .insight-text{
+    margin-top:14px; padding:14px 16px; background:var(--business-tint); border-radius:8px; font-size:13.5px; line-height:1.6;
+    color:#1E2A47; white-space:pre-wrap;
+  }
+  .insight-empty{ font-size:12.5px; color:var(--text-faint); margin-top:10px; }
+
+  /* ---------- Category manager ---------- */
+  .cat-manage{ padding:14px 18px; }
+  .cat-group-title{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); margin:10px 0 6px; }
+  .cat-chip-row{ display:flex; flex-wrap:wrap; gap:6px; }
+  .cat-chip{
+    display:inline-flex; align-items:center; gap:6px; background:var(--paper); border:1px solid var(--line);
+    border-radius:999px; padding:4px 6px 4px 10px; font-size:12px; font-weight:600;
+  }
+  .cat-chip button{ border:none; background:transparent; color:var(--text-faint); font-size:13px; line-height:1; padding:2px; }
+  .cat-chip button:hover{ color:var(--alert); }
+  .cat-add-row{ display:flex; gap:6px; margin-top:8px; }
+  .cat-add-row input{ flex:1; padding:7px 10px; border:1px solid var(--line); border-radius:7px; font-size:12.5px; }
+  .cat-add-row button{ border:1px solid var(--line); background:var(--card); border-radius:7px; padding:7px 12px; font-size:12.5px; font-weight:600; }
+
+  .budget-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:7px 0; border-bottom:1px solid var(--line); }
+  .budget-row:last-child{ border-bottom:none; }
+  .budget-row .b-name{ font-size:12.5px; font-weight:600; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .budget-row input{ width:100px; padding:6px 9px; border:1px solid var(--line); border-radius:7px; font-size:12.5px; text-align:right; }
+
+  .export-btn{
+    border:1px solid var(--line); background:var(--card); border-radius:8px; padding:7px 13px; font-size:12.5px; font-weight:700; color:var(--text);
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .export-btn:hover{ border-color:var(--accent); color:var(--accent-dark); }
+  .panel-actions{ display:flex; justify-content:space-between; align-items:center; padding:0 18px; flex-wrap:wrap; gap:8px; }
+
+  /* ---------- transactions search view ---------- */
+  .tx-filters{ display:flex; gap:8px; flex-wrap:wrap; padding:14px 18px; border-bottom:1px solid var(--line); }
+  .tx-filters input[type=text]{ flex:1; min-width:160px; padding:8px 11px; border:1px solid var(--line); border-radius:8px; font-size:13px; }
+  .tx-filters select{ padding:8px 10px; border:1px solid var(--line); border-radius:8px; font-size:12.5px; }
+  .tx-list{ max-height:560px; overflow-y:auto; }
+  .tx-list-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 18px; border-bottom:1px solid var(--line); cursor:pointer; }
+  .tx-list-row:hover{ background:var(--paper); }
+  .tx-list-left{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+  .tx-list-date{ font-size:11px; color:var(--text-faint); font-weight:600; }
+  .tx-list-cat{ font-size:13.5px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .tx-list-note{ font-size:11.5px; color:var(--text-faint); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .tx-list-right{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .tag{ font-size:10px; font-weight:700; padding:2px 7px; border-radius:999px; text-transform:uppercase; letter-spacing:.03em; }
+  .tag.planned{ background:var(--gold-tint); color:#8A6516; }
+  .tag.recurring{ background:var(--paper); color:var(--text-muted); border:1px solid var(--line); }
+
+  /* ---------- Modal ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(21,26,33,0.45); display:none; align-items:flex-start; justify-content:center;
+    padding:6vh 16px; z-index:50; overflow-y:auto;
+  }
+  .overlay.open{ display:flex; }
+  .modal{
+    background:var(--card); border-radius:14px; width:100%; max-width:460px; box-shadow:0 20px 60px rgba(0,0,0,0.25);
+    overflow:hidden;
+  }
+  .modal-head{ padding:18px 20px 12px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+  .modal-head h3{ margin:0; font-family:'Fraunces',serif; font-size:18px; font-weight:600; }
+  .modal-close{ border:none; background:transparent; font-size:18px; color:var(--text-faint); }
+  .modal-body{ padding:16px 20px 20px; }
+
+  .existing-tx{ display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line); cursor:pointer; border-radius:6px; transition:background .12s; }
+  .existing-tx:hover{ background:var(--paper); }
+  .existing-tx:hover .tx-cat{ color:var(--accent-dark); }
+  .existing-tx:last-child{ border-bottom:none; }
+  .tx-info{ display:flex; flex-direction:column; }
+  .tx-cat{ font-size:13px; font-weight:600; }
+  .tx-note{ font-size:11.5px; color:var(--text-faint); }
+  .tx-right{ display:flex; align-items:center; gap:10px; }
+  .tx-amt{ font-weight:700; font-size:13.5px; }
+  .tx-amt.rev{ color:var(--accent-dark); }
+  .tx-amt.exp{ color:#8C332C; }
+  .tx-del{ border:none; background:transparent; color:var(--text-faint); font-size:15px; }
+  .tx-del:hover{ color:var(--alert); }
+
+  .form-row{ margin-bottom:12px; }
+  .form-row label{ display:block; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); margin-bottom:5px; }
+  .form-row input, .form-row select, .form-row textarea{
+    width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font-size:14px; color:var(--text); background:#fff;
+  }
+  .field-hint{ font-size:11px; color:var(--text-faint); margin-top:5px; }
+  .edit-notice{
+    display:none; font-size:11.5px; color:#8A6516; background:var(--gold-tint); border-radius:7px; padding:8px 10px; margin-bottom:4px;
+  }
+  .edit-notice.show{ display:block; }
+  .type-toggle{ display:flex; gap:8px; }
+  .type-toggle button{
+    flex:1; padding:9px; border-radius:8px; border:1px solid var(--line); background:#fff; font-size:13px; font-weight:700; color:var(--text-muted);
+  }
+  .type-toggle button.active.rev{ background:var(--accent-tint); border-color:var(--accent); color:var(--accent-dark); }
+  .type-toggle button.active.exp{ background:var(--alert-tint); border-color:var(--alert); color:#8C332C; }
+  .type-toggle button.active:not(.rev):not(.exp){ background:var(--gold-tint); border-color:var(--gold); color:#8A6516; }
+  .form-actions{ display:flex; gap:8px; margin-top:16px; }
+  .btn-primary{ flex:1; background:var(--accent); color:#fff; border:none; padding:11px; border-radius:8px; font-size:13.5px; font-weight:700; }
+  .btn-primary:hover{ background:var(--accent-dark); }
+  .btn-secondary{ padding:11px 16px; background:transparent; border:1px solid var(--line); border-radius:8px; font-size:13.5px; font-weight:600; color:var(--text-muted); }
+
+  .empty-note{ font-size:12.5px; color:var(--text-faint); padding:6px 0 14px; }
+
+  .footnote{ text-align:center; font-size:11.5px; color:var(--text-faint); margin-top:28px; }
+
+  /* ---------- toast ---------- */
+  .toast{
+    position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(0);
+    background:var(--ink); color:#fff; padding:11px 14px 11px 16px; border-radius:10px; font-size:13px;
+    display:flex; align-items:center; gap:14px; box-shadow:0 10px 30px rgba(0,0,0,.3); z-index:80;
+    opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
+  }
+  .toast.show{ opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(-4px); }
+  .toast button{ border:none; background:transparent; color:#8FD9C4; font-weight:700; font-size:13px; }
+  .toast button:hover{ color:#fff; }
+
+  @media (max-width:640px){
+    #app{ padding:0 12px 90px; }
+    .topbar{ padding:16px 0 12px; }
+    .brand-mark{ font-size:22px; }
+    .toolbar-row{ margin-bottom:12px; }
+    .month-label{ min-width:150px; font-size:17px; }
+    .cal-grid{ gap:4px; padding:4px 5px 10px; }
+    .weekday-row{ padding:0 5px; }
+    .weekday-row div{ font-size:9.5px; padding:4px 0; }
+    .cal-header{ padding:12px 12px 8px; }
+    .overlay{ padding:0; align-items:flex-end; }
+    .modal{ max-width:none; width:100%; border-radius:16px 16px 0 0; max-height:92vh; overflow-y:auto; }
+    .two-col{ grid-template-columns:1fr; }
+    .tx-filters{ flex-direction:column; }
+    .tx-filters select{ width:100%; }
+  }
+  @media (max-width:520px){
+    .stat-grid{ grid-template-columns:1fr; }
+    .insight-metrics{ grid-template-columns:1fr 1fr; }
+    .day-cell{ min-height:64px; padding:4px 5px; gap:3px; }
+    .amt-pill{ font-size:8.5px; padding:1px 4px; }
+    .day-num{ font-size:11.5px; }
+    .modal-body{ padding:14px 16px 18px; }
+    .modal-head{ padding:16px 16px 10px; }
+    .form-actions{ flex-direction:column; }
+    .btn-secondary{ width:100%; }
+    .status-filter button{ padding:6px 10px; font-size:11px; }
+  }
+</style>
+</head>
+<body data-mode="personal">
+<div id="app">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">Ledger<span>line</span></div>
+      <div class="brand-sub" id="modeSub">Personal cashflow</div>
+    </div>
+    <div class="mode-toggle" id="modeToggle">
+      <button data-mode="personal" class="active">Personal</button>
+      <button data-mode="business">Business</button>
+    </div>
+  </div>
+
+  <div id="bannerHost"></div>
+
+  <div class="toolbar-row">
+    <div class="status-filter" id="statusFilter">
+      <button data-status="all" class="active">All</button>
+      <button data-status="actual">Actual</button>
+      <button data-status="planned">Planned</button>
+    </div>
+    <button class="install-btn" id="installBtn">📱 Add to phone</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-view="calendar">Calendar</button>
+    <button class="tab-btn" data-view="dashboard">Dashboard</button>
+    <button class="tab-btn" data-view="projection">12-Month Projection</button>
+    <button class="tab-btn" data-view="transactions">All Transactions</button>
+    <button class="tab-btn" data-view="settings">Categories &amp; Balance</button>
+  </div>
+
+  <!-- CALENDAR VIEW -->
+  <div class="view active" id="view-calendar">
+    <div class="cal-layout">
+      <div class="card">
+        <div class="cal-header">
+          <div class="month-nav">
+            <button id="prevMonth">‹</button>
+            <div class="month-label" id="monthLabel">August 2026</div>
+            <button id="nextMonth">›</button>
+          </div>
+          <button class="today-btn" id="todayBtn">Today</button>
+        </div>
+        <div class="weekday-row" id="weekdayRow"></div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+
+      <div class="card" id="weekPanel">
+        <div class="week-panel-head">
+          <div class="week-panel-title">Week-by-week ledger</div>
+          <select id="weekStartQuickSelect" class="week-start-select" title="Change what day each week starts on"></select>
+        </div>
+        <div class="week-panel-sub">Tap a week to see revenue and expenses by category</div>
+        <div id="weekRows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div class="view" id="view-dashboard">
+    <div class="stat-grid">
+      <div class="card stat-card">
+        <div class="stat-lbl">Revenue this month</div>
+        <div class="stat-val rev num" id="dashRev">$0</div>
+        <div class="stat-sub" id="dashRevSub">0 sources</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-lbl">Expenses this month</div>
+        <div class="stat-val exp num" id="dashExp">$0</div>
+        <div class="stat-sub" id="dashExpSub">0 categories</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-lbl">Net for the month</div>
+        <div class="stat-val net num" id="dashNet">$0</div>
+        <div class="stat-sub" id="dashNetSub">—</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="panel-title">Revenue by source</div>
+        <div class="panel-sub">Where money is coming from this month</div>
+        <div id="revBars"></div>
+      </div>
+      <div class="card">
+        <div class="panel-title">Expenses by category</div>
+        <div class="panel-sub">Where money is going this month</div>
+        <div id="expBars"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="panel-actions">
+        <div>
+          <div class="panel-title" style="padding:16px 0 2px;">Week-by-week breakdown</div>
+          <div class="panel-sub" style="padding:0 0 12px;">Each week's balance carried in from prior weeks, this week's activity, and the balance carried out</div>
+        </div>
+        <button class="export-btn" id="exportMonthBtn">⇩ Export this month (CSV)</button>
+      </div>
+      <div class="proj-table-wrap">
+        <table class="week-table">
+          <thead><tr><th>Week</th><th class="right">Carried in</th><th class="right">Revenue</th><th class="right">Expenses</th><th class="right">Net</th><th class="right">Carried out</th></tr></thead>
+          <tbody id="dashWeekBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" id="insightCard" style="display:none;">
+      <div class="panel-title">Expert insight <span style="font-weight:500;color:var(--text-faint);font-size:12px;">— Business</span></div>
+      <div class="panel-sub">Automated read of this month's numbers, plus an on-demand AI analysis</div>
+      <div class="insight-box">
+        <div class="insight-metrics" id="insightMetrics"></div>
+        <button class="ai-btn" id="aiInsightBtn">✦ Generate AI expert insight</button>
+        <div id="insightOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTION VIEW -->
+  <div class="view" id="view-projection">
+    <div class="card" style="margin-bottom:18px;">
+      <div class="panel-title">12-month projection</div>
+      <div class="panel-sub">Based on recurring entries and starting balance. Set a starting balance under Categories &amp; Balance for an accurate running total.</div>
+      <div class="proj-table-wrap">
+        <table class="proj-table">
+          <thead><tr><th>Month</th><th>Revenue</th><th>Expenses</th><th>Net</th><th>Running balance</th></tr></thead>
+          <tbody id="projBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL TRANSACTIONS VIEW -->
+  <div class="view" id="view-transactions">
+    <div class="card">
+      <div class="panel-actions" style="padding:16px 18px 0;">
+        <div>
+          <div class="panel-title" style="padding:0;">All transactions</div>
+          <div class="panel-sub" style="padding:2px 0 0;">Search and filter every entry logged in this mode, including recurring rules</div>
+        </div>
+        <button class="export-btn" id="exportSearchBtn">⇩ Export filtered (CSV)</button>
+      </div>
+      <div class="tx-filters">
+        <input type="text" id="txSearchInput" placeholder="Search category or note…">
+        <select id="txSearchType">
+          <option value="all">All types</option>
+          <option value="revenue">Revenue only</option>
+          <option value="expense">Expense only</option>
+        </select>
+        <select id="txSearchStatus">
+          <option value="all">All statuses</option>
+          <option value="actual">Actual only</option>
+          <option value="planned">Planned only</option>
+        </select>
+      </div>
+      <div class="tx-list" id="txSearchList"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS VIEW -->
+  <div class="view" id="view-settings">
+    <div class="card" style="margin-bottom:18px;">
+      <div class="panel-title">Starting balance</div>
+      <div class="panel-sub">Used as the baseline for weekly and 12-month running balances in this mode</div>
+      <div class="settings-row">
+        <label>Current balance ($)</label>
+        <input type="number" id="startingBalanceInput" step="0.01">
+        <button class="btn-secondary" id="saveBalanceBtn">Save</button>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:18px;">
+      <div class="panel-title">Week layout</div>
+      <div class="panel-sub">Choose what day each week starts on. This reshapes every week boundary in the calendar grid, the weekly ledger, and the dashboard — automatically, for past and future weeks alike — and is saved with this mode.</div>
+      <div class="settings-row">
+        <label>Week starts on</label>
+        <select id="weekStartSelect" class="week-start-select" style="padding:8px 10px; font-size:13px;"></select>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="panel-title">Revenue categories</div>
+        <div class="cat-manage" id="revCatManage"></div>
+      </div>
+      <div class="card">
+        <div class="panel-title">Expense categories</div>
+        <div class="cat-manage" id="expCatManage"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="panel-title">Monthly budget caps</div>
+      <div class="panel-sub">Set a spending limit per expense category. The dashboard flags any category that goes over.</div>
+      <div class="cat-manage" id="budgetManage"></div>
+    </div>
+
+    <div class="card">
+      <div class="panel-actions" style="padding:16px 18px;">
+        <div>
+          <div style="font-family:'Fraunces',serif; font-size:16px; font-weight:600;">Export all data</div>
+          <div class="panel-sub" style="padding:2px 0 0;">Download every transaction in this mode as a CSV file</div>
+        </div>
+        <button class="export-btn" id="exportAllBtn">⇩ Export all (CSV)</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">Your data is saved privately to this browser session and only visible to you.</div>
+</div>
+
+<!-- Day modal -->
+<div class="overlay" id="dayOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="dayModalTitle">Friday, August 21</h3>
+      <button class="modal-close" id="dayModalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="existingTxList"></div>
+      <div id="txForm">
+        <div class="form-row">
+          <label>Type</label>
+          <div class="type-toggle">
+            <button type="button" class="active rev" data-type="revenue" id="typeRevBtn">+ Revenue</button>
+            <button type="button" class="exp" data-type="expense" id="typeExpBtn">− Expense</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Category</label>
+          <select id="txCategory"></select>
+        </div>
+        <div class="form-row">
+          <label>Amount ($)</label>
+          <input type="number" id="txAmount" step="0.01" min="0" placeholder="0.00">
+        </div>
+        <div class="form-row">
+          <label>Note (optional)</label>
+          <input type="text" id="txNote" placeholder="e.g. Client invoice #204">
+        </div>
+        <div class="form-row">
+          <label>Repeat</label>
+          <select id="txRecurrence">
+            <option value="none">Does not repeat</option>
+            <option value="weekly">Weekly</option>
+            <option value="biweekly">Every 2 weeks</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+        <div class="form-row" id="recurrenceEndRow" style="display:none;">
+          <label>Ends (optional)</label>
+          <input type="date" id="txRecurrenceEnd">
+          <div class="field-hint">Leave blank to repeat automatically for 12 months (5 years for yearly).</div>
+        </div>
+        <div class="form-row">
+          <label>Status</label>
+          <div class="type-toggle">
+            <button type="button" class="active" data-status-btn="actual" id="statusActualBtn">✓ Actual</button>
+            <button type="button" data-status-btn="planned" id="statusPlannedBtn">◇ Planned</button>
+          </div>
+        </div>
+        <div class="edit-notice" id="editNotice">Editing this entry updates every occurrence of its recurring series.</div>
+        <div class="form-actions">
+          <button class="btn-primary" id="txSaveBtn">Add to calendar</button>
+          <button class="btn-secondary" id="cancelEditBtn" style="display:none;">Cancel edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast (undo delete) -->
+<div class="toast" id="toast">
+  <span id="toastMsg">Entry deleted</span>
+  <button id="toastUndoBtn">Undo</button>
+</div>
+
+<!-- Add to phone instructions modal -->
+<div class="overlay" id="installOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Add Ledgerline to your phone</h3>
+      <button class="modal-close" id="installModalClose">✕</button>
+    </div>
+    <div class="modal-body" id="installModalBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ constants ============ */
+  var STORAGE_KEY = "ledgerline-state-v1";
+  var MS_DAY = 86400000;
+  var DAY_LABELS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  var WEEKDAY_SHORT = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; // index 0 = Sunday, matches Date#getDay()
+  var WEEKDAY_FULL = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var MONTH_LABELS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  var DEFAULTS = {
+    personal: {
+      startingBalance: 0,
+      weekStartDay: 1,
+      categories: {
+        revenue: ["Salary","Freelance","Investment","Gift","Other Income"],
+        expense: ["Housing","Loan / Credit Payment","Education","Groceries","Utilities","Transportation","Entertainment","Healthcare","Other"]
+      },
+      budgets: {},
+      transactions: []
+    },
+    business: {
+      startingBalance: 0,
+      weekStartDay: 1,
+      categories: {
+        revenue: ["Product Sales","Services","Consulting","Grants / Funding","Other Revenue"],
+        expense: ["Payroll","Rent / Facilities","Marketing","Software & Tools","Inventory","Taxes","Professional Fees","Loan / Credit Payment","Other"]
+      },
+      budgets: {},
+      transactions: []
+    }
+  };
+
+  /* ============ state ============ */
+  var state = null;           // full app state, loaded async
+  var mode = "personal";
+  var viewMonth = new Date();
+  viewMonth.setDate(1);
+  var activeDayISO = null;
+  var activeFormType = "revenue";
+  var activeFormStatus = "actual";
+  var stateLoaded = false;
+  var statusFilterVal = "all"; // all | actual | planned
+  var pendingDelete = null;    // { tx, timeoutId }
+  var deferredInstallPrompt = null;
+  var editingTxId = null;
+
+  /* ============ storage ============ */
+  async function loadState(){
+    try{
+      var res = await window.storage.get(STORAGE_KEY, false);
+      if(res && res.value){
+        state = JSON.parse(res.value);
+      } else {
+        state = JSON.parse(JSON.stringify(DEFAULTS));
+      }
+    }catch(e){
+      state = JSON.parse(JSON.stringify(DEFAULTS));
+    }
+    // guard against missing keys if structure evolves
+    ["personal","business"].forEach(function(m){
+      if(!state[m]) state[m] = JSON.parse(JSON.stringify(DEFAULTS[m]));
+      if(!state[m].categories) state[m].categories = JSON.parse(JSON.stringify(DEFAULTS[m].categories));
+      if(!state[m].transactions) state[m].transactions = [];
+      if(!state[m].budgets) state[m].budgets = {};
+      if(typeof state[m].weekStartDay !== "number") state[m].weekStartDay = 1;
+      if(typeof state[m].startingBalance !== "number") state[m].startingBalance = 0;
+      state[m].transactions.forEach(function(tx){
+        if(!tx.status) tx.status = "actual";
+        if(typeof tx.deleted !== "boolean") tx.deleted = false;
+      });
+    });
+    stateLoaded = true;
+  }
+
+  var saveTimer = null;
+  function saveState(){
+    if(saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(async function(){
+      try{
+        await window.storage.set(STORAGE_KEY, JSON.stringify(state), false);
+      }catch(e){ console.error("Save failed", e); }
+    }, 150);
+  }
+
+  /* ============ helpers ============ */
+  function fmtMoney(n){
+    var neg = n < 0;
+    n = Math.abs(n);
+    var s = "$" + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+    return neg ? "−" + s : s;
+  }
+  function fmtMoneyShort(n){
+    var neg = n < 0;
+    var abs = Math.abs(n);
+    var s = "$" + abs.toLocaleString(undefined,{maximumFractionDigits:0});
+    return neg ? "−"+s : s;
+  }
+  function isoDate(d){
+    return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  }
+  function parseISO(iso){
+    var p = iso.split("-").map(Number);
+    return new Date(p[0], p[1]-1, p[2]);
+  }
+  function addDays(d, n){ var r = new Date(d); r.setDate(r.getDate()+n); return r; }
+  function addMonths(d, n){ var r = new Date(d); r.setMonth(r.getMonth()+n); return r; }
+  function startOfWeek(d, startDay){
+    if(startDay == null) startDay = 1; // default Monday
+    var r = new Date(d);
+    var day = r.getDay(); // 0=Sun..6=Sat
+    var diff = (day - startDay + 7) % 7;
+    r.setDate(r.getDate() - diff);
+    r.setHours(0,0,0,0);
+    return r;
+  }
+  function sameDay(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+  function todayDate(){ var t = new Date(); t.setHours(0,0,0,0); return t; }
+
+  function currentData(){ return state[mode]; }
+
+  /* Expand a transaction's recurrence into concrete occurrence dates within [rangeStart, rangeEnd] inclusive */
+  function occurrencesInRange(tx, rangeStart, rangeEnd){
+    var anchor = parseISO(tx.date);
+    var out = [];
+    if(!tx.recurrence || tx.recurrence === "none"){
+      if(anchor >= rangeStart && anchor <= rangeEnd) out.push(anchor);
+      return out;
+    }
+    var defaultHorizonMonths = tx.recurrence === "yearly" ? 60 : 12;
+    var maxHorizon = addMonths(anchor, 120); // hard safety cap: 10 years out
+    var horizon = tx.recurrenceEnd ? parseISO(tx.recurrenceEnd) : addMonths(anchor, defaultHorizonMonths);
+    if(horizon > maxHorizon) horizon = maxHorizon;
+    if(horizon < anchor) horizon = anchor;
+
+    var stepDays = tx.recurrence === "weekly" ? 7 : tx.recurrence === "biweekly" ? 14 : null;
+    if(stepDays){
+      var cur = new Date(anchor);
+      var guard = 0;
+      while(cur <= horizon && guard < 600){
+        if(cur >= rangeStart && cur <= rangeEnd) out.push(new Date(cur));
+        cur = addDays(cur, stepDays);
+        guard++;
+      }
+    } else if(tx.recurrence === "monthly"){
+      var i=0;
+      while(i < 200){
+        var occ = addMonths(anchor, i);
+        if(occ > horizon) break;
+        if(occ >= rangeStart && occ <= rangeEnd) out.push(occ);
+        i++;
+      }
+    } else if(tx.recurrence === "yearly"){
+      var j=0;
+      while(j < 30){
+        var occY = addMonths(anchor, j*12);
+        if(occY > horizon) break;
+        if(occY >= rangeStart && occY <= rangeEnd) out.push(occY);
+        j++;
+      }
+    }
+    return out;
+  }
+
+  /* Collect all occurrences (transaction ref + concrete date) across all transactions within a range,
+     respecting the current status filter and skipping soft-deleted entries */
+  function collectOccurrences(rangeStart, rangeEnd){
+    var list = [];
+    currentData().transactions.forEach(function(tx){
+      if(tx.deleted) return;
+      if(statusFilterVal !== "all" && tx.status !== statusFilterVal) return;
+      occurrencesInRange(tx, rangeStart, rangeEnd).forEach(function(d){
+        list.push({ tx: tx, date: d });
+      });
+    });
+    return list;
+  }
+
+  function sumByType(occs, type){
+    return occs.filter(function(o){ return o.tx.type === type; })
+                .reduce(function(s,o){ return s + o.tx.amount; }, 0);
+  }
+
+  /* ============ rendering: mode / tabs ============ */
+  function applyMode(){
+    document.body.setAttribute("data-mode", mode);
+    document.getElementById("modeSub").textContent = mode === "personal" ? "Personal cashflow" : "Business cashflow";
+    document.querySelectorAll("#modeToggle button").forEach(function(b){
+      b.classList.toggle("active", b.getAttribute("data-mode") === mode);
+    });
+    document.getElementById("insightCard").style.display = mode === "business" ? "block" : "none";
+    renderAll();
+  }
+
+  function switchView(name){
+    document.querySelectorAll(".tab-btn").forEach(function(b){
+      b.classList.toggle("active", b.getAttribute("data-view") === name);
+    });
+    document.querySelectorAll(".view").forEach(function(v){
+      v.classList.toggle("active", v.id === "view-"+name);
+    });
+    if(name === "dashboard") renderDashboard();
+    if(name === "projection") renderProjection();
+    if(name === "settings") renderSettings();
+    if(name === "transactions") renderTransactionsView();
+  }
+
+  /* ============ rendering: calendar ============ */
+  function renderAll(){
+    renderCalendar();
+    renderWeekPanel();
+    renderBanner();
+    var activeView = document.querySelector(".tab-btn.active").getAttribute("data-view");
+    if(activeView === "dashboard") renderDashboard();
+    if(activeView === "projection") renderProjection();
+    if(activeView === "settings") renderSettings();
+    if(activeView === "transactions") renderTransactionsView();
+  }
+
+  function renderWeekdayHeader(){
+    var startDay = currentData().weekStartDay;
+    var host = document.getElementById("weekdayRow");
+    var html = "";
+    for(var i=0;i<7;i++){
+      html += "<div>" + WEEKDAY_SHORT[(startDay+i)%7] + "</div>";
+    }
+    host.innerHTML = html;
+  }
+
+  function renderCalendar(){
+    var label = MONTH_LABELS[viewMonth.getMonth()] + " " + viewMonth.getFullYear();
+    document.getElementById("monthLabel").textContent = label;
+    renderWeekdayHeader();
+    populateWeekStartSelects();
+
+    var startDay = currentData().weekStartDay;
+    var gridStart = startOfWeek(new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1), startDay);
+    var monthEndDate = new Date(viewMonth.getFullYear(), viewMonth.getMonth()+1, 0);
+    var gridEnd = startOfWeek(monthEndDate, startDay);
+    gridEnd = addDays(gridEnd, 6);
+
+    var occs = collectOccurrences(gridStart, gridEnd);
+    var byDay = {};
+    occs.forEach(function(o){
+      var key = isoDate(o.date);
+      if(!byDay[key]) byDay[key] = { rev:0, exp:0, revPlanned:true, expPlanned:true };
+      var field = o.tx.type === "revenue" ? "rev" : "exp";
+      byDay[key][field] += o.tx.amount;
+      if(o.tx.status !== "planned") byDay[key][field+"Planned"] = false;
+    });
+
+    var grid = document.getElementById("calGrid");
+    grid.innerHTML = "";
+    var cur = new Date(gridStart);
+    var today = todayDate();
+    while(cur <= gridEnd){
+      var iso = isoDate(cur);
+      var outside = cur.getMonth() !== viewMonth.getMonth();
+      var day = byDay[iso];
+      var net = day ? day.rev - day.exp : 0;
+
+      var cell = document.createElement("div");
+      cell.className = "day-cell" + (outside ? " outside":"") + (sameDay(cur,today) ? " today":"") + (day && net < 0 ? " negative-day":"");
+      cell.setAttribute("data-date", iso);
+
+      var num = document.createElement("div");
+      num.className = "day-num";
+      num.textContent = cur.getDate();
+      cell.appendChild(num);
+
+      if(day){
+        var amounts = document.createElement("div");
+        amounts.className = "day-amounts";
+        if(day.rev > 0){
+          var rp = document.createElement("div");
+          rp.className = "amt-pill amt-rev" + (day.revPlanned ? " planned" : "");
+          rp.textContent = "+" + fmtMoneyShort(day.rev);
+          amounts.appendChild(rp);
+        }
+        if(day.exp > 0){
+          var ep = document.createElement("div");
+          ep.className = "amt-pill amt-exp" + (day.expPlanned ? " planned" : "");
+          ep.textContent = "−" + fmtMoneyShort(day.exp);
+          amounts.appendChild(ep);
+        }
+        cell.appendChild(amounts);
+      }
+
+      grid.appendChild(cell);
+      cur = addDays(cur, 1);
+    }
+  }
+
+  function weeksTouchingMonth(){
+    var gridStart = startOfWeek(new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1), currentData().weekStartDay);
+    var monthEndDate = new Date(viewMonth.getFullYear(), viewMonth.getMonth()+1, 0);
+    var weeks = [];
+    var cur = new Date(gridStart);
+    while(cur <= monthEndDate){
+      var wEnd = addDays(cur, 6);
+      weeks.push({ start:new Date(cur), end:wEnd });
+      cur = addDays(cur, 7);
+    }
+    return weeks;
+  }
+
+  /* Build the full week-by-week picture for the visible month: revenue, expenses, net,
+     the balance carried in from all prior activity (rooted in the mode's starting balance),
+     the resulting balance carried out, and a category breakdown for each week. */
+  function computeWeekBreakdowns(){
+    var weeks = weeksTouchingMonth();
+    if(weeks.length === 0) return [];
+
+    var running = currentData().startingBalance;
+    var firstWeekStart = weeks[0].start;
+    var priorOccs = collectOccurrences(new Date(2000,0,1), addDays(firstWeekStart,-1));
+    running += sumByType(priorOccs,"revenue") - sumByType(priorOccs,"expense");
+
+    return weeks.map(function(w){
+      var occs = collectOccurrences(w.start, w.end);
+      var rev = sumByType(occs, "revenue");
+      var exp = sumByType(occs, "expense");
+      var net = rev - exp;
+      var carriedIn = running;
+      running += net;
+      var carriedOut = running;
+
+      var revByCat = {}, expByCat = {};
+      occs.forEach(function(o){
+        var bucket = o.tx.type === "revenue" ? revByCat : expByCat;
+        bucket[o.tx.category] = (bucket[o.tx.category]||0) + o.tx.amount;
+      });
+
+      return {
+        start: w.start, end: w.end, rev: rev, exp: exp, net: net,
+        carriedIn: carriedIn, carriedOut: carriedOut,
+        revByCat: revByCat, expByCat: expByCat
+      };
+    });
+  }
+
+  var expandedWeekKeys = {};
+
+  function renderWeekPanel(){
+    var weeks = computeWeekBreakdowns();
+    var host = document.getElementById("weekRows");
+    host.innerHTML = "";
+
+    if(weeks.length === 0){
+      host.innerHTML = '<div class="empty-note">No weeks to show.</div>';
+      return;
+    }
+
+    weeks.forEach(function(w){
+      var isNeg = w.net < 0;
+      var endsNeg = w.carriedOut < 0;
+      var wKey = isoDate(w.start);
+      var isOpen = !!expandedWeekKeys[wKey];
+      var rangeLbl = shortDate(w.start) + " – " + shortDate(w.end);
+
+      var row = document.createElement("div");
+      row.className = "week-row" + (isNeg ? " neg":"");
+      row.setAttribute("data-week-key", wKey);
+
+      var detailHtml = weekDetailHTML(w);
+
+      row.innerHTML =
+        '<div class="week-row-top" data-week-toggle="'+wKey+'">'+
+          '<div class="week-range">'+rangeLbl+ (isNeg ? ' <span class="warn">⚠</span>' : '') +'</div>'+
+          '<span class="week-chevron'+(isOpen?' open':'')+'">▾</span>'+
+        '</div>'+
+        '<div class="week-carry">Carried in <span class="num">'+fmtMoney(w.carriedIn)+'</span></div>'+
+        '<div class="week-nums">'+
+          '<div><span class="lbl">Revenue</span><span class="val num" style="color:var(--accent-dark)">+'+fmtMoney(w.rev)+'</span></div>'+
+          '<div><span class="lbl">Expenses</span><span class="val num" style="color:#8C332C">−'+fmtMoney(w.exp)+'</span></div>'+
+        '</div>'+
+        '<div class="week-balance '+(isNeg?'neg':'pos')+' num">Net this week: '+fmtMoney(w.net)+ (isNeg ? ' — negative week' : '') +'</div>'+
+        '<div class="week-endbal '+(endsNeg?'neg':'')+'">Balance carried out <span class="num">'+fmtMoney(w.carriedOut)+'</span>'+(endsNeg?' <span class="warn">⚠ goes negative</span>':'')+'</div>'+
+        '<div class="week-detail'+(isOpen?' open':'')+'" id="weekDetail-'+wKey+'">'+detailHtml+'</div>';
+
+      host.appendChild(row);
+    });
+  }
+
+  function weekDetailHTML(w){
+    var revEntries = Object.keys(w.revByCat).sort(function(a,b){ return w.revByCat[b]-w.revByCat[a]; });
+    var expEntries = Object.keys(w.expByCat).sort(function(a,b){ return w.expByCat[b]-w.expByCat[a]; });
+    if(revEntries.length === 0 && expEntries.length === 0){
+      return '<div class="empty-note" style="padding:8px 0 2px;">Nothing logged this week.</div>';
+    }
+    var html = "";
+    if(revEntries.length){
+      html += '<div class="week-detail-title">Revenue sources</div>';
+      revEntries.forEach(function(c){
+        html += '<div class="week-detail-row"><span>'+escapeHtml(c)+'</span><span class="num" style="color:var(--accent-dark);font-weight:700;">+'+fmtMoney(w.revByCat[c])+'</span></div>';
+      });
+    }
+    if(expEntries.length){
+      html += '<div class="week-detail-title">Expense categories</div>';
+      expEntries.forEach(function(c){
+        html += '<div class="week-detail-row"><span>'+escapeHtml(c)+'</span><span class="num" style="color:#8C332C;font-weight:700;">−'+fmtMoney(w.expByCat[c])+'</span></div>';
+      });
+    }
+    return html;
+  }
+
+  function shortDate(d){
+    return (d.getMonth()+1)+"/"+d.getDate();
+  }
+
+  function renderBanner(){
+    var weeks = computeWeekBreakdowns();
+    var negCount = 0, negBalanceCount = 0;
+    weeks.forEach(function(w){
+      if(w.net < 0) negCount++;
+      if(w.carriedOut < 0) negBalanceCount++;
+    });
+    var host = document.getElementById("bannerHost");
+    if(negBalanceCount > 0){
+      host.innerHTML = '<div class="banner"><span class="dot"></span><b>Balance goes negative</b>&nbsp;in '+negBalanceCount+' week'+(negBalanceCount>1?'s':'')+' this month, carrying prior weeks forward. Check the weekly ledger for details.</div>';
+    } else if(negCount > 0){
+      host.innerHTML = '<div class="banner"><span class="dot"></span><b>'+negCount+' negative week'+(negCount>1?'s':'')+'</b>&nbsp;in '+MONTH_LABELS[viewMonth.getMonth()]+' — expenses are projected to exceed revenue, though the carried-over balance stays positive. Check the weekly ledger for details.</div>';
+    } else {
+      host.innerHTML = "";
+    }
+  }
+
+  /* ============ rendering: dashboard ============ */
+  function renderDashboard(){
+    var monthStart = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1);
+    var monthEnd = new Date(viewMonth.getFullYear(), viewMonth.getMonth()+1, 0);
+    var occs = collectOccurrences(monthStart, monthEnd);
+    var rev = sumByType(occs,"revenue");
+    var exp = sumByType(occs,"expense");
+    var net = rev - exp;
+
+    document.getElementById("dashRev").textContent = fmtMoney(rev);
+    document.getElementById("dashExp").textContent = fmtMoney(exp);
+    var netEl = document.getElementById("dashNet");
+    netEl.textContent = fmtMoney(net);
+    netEl.className = "stat-val net num " + (net<0 ? "neg":"pos");
+
+    var revByCat = {}, expByCat = {};
+    occs.forEach(function(o){
+      var bucket = o.tx.type === "revenue" ? revByCat : expByCat;
+      bucket[o.tx.category] = (bucket[o.tx.category]||0) + o.tx.amount;
+    });
+    document.getElementById("dashRevSub").textContent = Object.keys(revByCat).length + " source" + (Object.keys(revByCat).length===1?"":"s");
+    document.getElementById("dashExpSub").textContent = Object.keys(expByCat).length + " categor" + (Object.keys(expByCat).length===1?"y":"ies");
+    document.getElementById("dashNetSub").textContent = net >= 0 ? "On track this month" : "Spending exceeds revenue";
+
+    renderBars("revBars", revByCat, rev, "rev");
+    renderBars("expBars", expByCat, exp, "exp");
+
+    // week table
+    var weeks = computeWeekBreakdowns();
+    var tbody = document.getElementById("dashWeekBody");
+    tbody.innerHTML = "";
+    weeks.forEach(function(w){
+      var tr = document.createElement("tr");
+      if(w.net<0) tr.className = "neg";
+      tr.innerHTML = '<td>'+shortDate(w.start)+' – '+shortDate(w.end)+'</td>'+
+        '<td class="right num">'+fmtMoney(w.carriedIn)+'</td>'+
+        '<td class="right num">'+fmtMoney(w.rev)+'</td>'+
+        '<td class="right num">'+fmtMoney(w.exp)+'</td>'+
+        '<td class="right num" style="font-weight:700;color:'+(w.net<0?'var(--alert)':'var(--accent-dark)')+'">'+fmtMoney(w.net)+'</td>'+
+        '<td class="right num" style="font-weight:800;color:'+(w.carriedOut<0?'var(--alert)':'var(--ink)')+'">'+fmtMoney(w.carriedOut)+'</td>';
+      tbody.appendChild(tr);
+    });
+
+    if(mode === "business") renderInsightMetrics(rev, exp, net);
+  }
+
+  function renderBars(hostId, byCat, total, kind){
+    var host = document.getElementById(hostId);
+    var entries = Object.keys(byCat).map(function(k){ return [k, byCat[k]]; });
+    entries.sort(function(a,b){ return b[1]-a[1]; });
+    if(entries.length===0){
+      host.innerHTML = '<div class="empty-note" style="padding:0 18px 16px;">No '+(kind==="rev"?"revenue":"expenses")+' logged yet this month.</div>';
+      return;
+    }
+    var budgets = kind === "exp" ? (currentData().budgets || {}) : null;
+    host.innerHTML = "";
+    entries.forEach(function(e){
+      var pct = total>0 ? Math.round((e[1]/total)*100) : 0;
+      var budget = budgets ? budgets[e[0]] : null;
+      var over = budget && e[1] > budget;
+      var barPct = budget ? Math.min(100, Math.round((e[1]/budget)*100)) : pct;
+      var amtHtml = fmtMoneyShort(e[1]);
+      if(budget){
+        amtHtml = fmtMoneyShort(e[1]) + ' <span class="budget-of">/ '+fmtMoneyShort(budget)+'</span>';
+      }
+      var row = document.createElement("div");
+      row.className = "bar-row";
+      row.innerHTML = '<div class="name">'+escapeHtml(e[0])+'</div>'+
+        '<div class="bar-track"><div class="bar-fill '+kind+(over?' over':'')+'" style="width:'+(budget?barPct:pct)+'%'+(over?';background:var(--alert)':'')+'"></div></div>'+
+        '<div class="bar-amt num'+(over?' over-budget':'')+'">'+amtHtml+'</div>';
+      host.appendChild(row);
+    });
+    host.insertAdjacentHTML("beforeend", '<div style="height:8px;"></div>');
+  }
+
+  function escapeHtml(s){
+    var d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  /* ============ expert insight (business) ============ */
+  function renderInsightMetrics(rev, exp, net){
+    var host = document.getElementById("insightMetrics");
+    var burn = exp; // monthly burn
+    var margin = rev>0 ? Math.round((net/rev)*100) : (net<0?-100:0);
+    var runway = burn>0 ? (currentData().startingBalance / burn) : null;
+    host.innerHTML =
+      '<div class="metric"><div class="m-lbl">Monthly burn</div><div class="m-val">'+fmtMoneyShort(burn)+'</div></div>'+
+      '<div class="metric"><div class="m-lbl">Margin</div><div class="m-val">'+margin+'%</div></div>'+
+      '<div class="metric"><div class="m-lbl">Runway (months)</div><div class="m-val">'+(runway===null?'—':(runway<0?'0':runway.toFixed(1)))+'</div></div>';
+  }
+
+  var lastInsightPayload = null;
+  async function generateAIInsight(){
+    var btn = document.getElementById("aiInsightBtn");
+    var out = document.getElementById("insightOutput");
+    btn.disabled = true;
+    btn.textContent = "✦ Thinking…";
+    out.innerHTML = "";
+
+    var monthStart = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1);
+    var monthEnd = new Date(viewMonth.getFullYear(), viewMonth.getMonth()+1, 0);
+    var occs = collectOccurrences(monthStart, monthEnd);
+    var rev = sumByType(occs,"revenue");
+    var exp = sumByType(occs,"expense");
+    var revByCat = {}, expByCat = {};
+    occs.forEach(function(o){
+      var bucket = o.tx.type === "revenue" ? revByCat : expByCat;
+      bucket[o.tx.category] = (bucket[o.tx.category]||0) + o.tx.amount;
+    });
+    var weeks = computeWeekBreakdowns();
+    var weekSummaries = weeks.map(function(w){
+      return {
+        range: shortDate(w.start)+"-"+shortDate(w.end),
+        revenue: w.rev, expenses: w.exp, net: w.net,
+        balanceCarriedIn: w.carriedIn, balanceCarriedOut: w.carriedOut
+      };
+    });
+
+    var payload = {
+      month: MONTH_LABELS[viewMonth.getMonth()]+" "+viewMonth.getFullYear(),
+      startingBalance: currentData().startingBalance,
+      totalRevenue: rev,
+      totalExpenses: exp,
+      revenueByCategory: revByCat,
+      expensesByCategory: expByCat,
+      weeklyBreakdown: weekSummaries
+    };
+
+    var prompt = "You are a concise financial advisor reviewing a small business's monthly cashflow data (all figures USD). "+
+      "Data: " + JSON.stringify(payload) + ". "+
+      "Give 3 to 4 short, specific, actionable recommendations (bullet points, each under 25 words) about cash flow health, spending concentration, and any negative weeks. "+
+      "Be direct and practical, no generic disclaimers, no preamble, just the bullets starting with '- '.";
+
+    try{
+      var response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-6",
+          max_tokens: 1000,
+          messages: [{ role:"user", content: prompt }]
+        })
+      });
+      var data = await response.json();
+      var text = (data.content||[]).map(function(c){ return c.text||""; }).join("\n").trim();
+      if(!text) text = "No insight was returned. Try again in a moment.";
+      out.innerHTML = '<div class="insight-text">'+escapeHtml(text)+'</div>';
+    }catch(e){
+      out.innerHTML = '<div class="insight-text">Could not reach the insight service right now. Please try again.</div>';
+    }
+    btn.disabled = false;
+    btn.textContent = "✦ Regenerate AI expert insight";
+  }
+
+  /* ============ rendering: projection ============ */
+  function renderProjection(){
+    var tbody = document.getElementById("projBody");
+    tbody.innerHTML = "";
+    var running = currentData().startingBalance;
+    var start = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1);
+    for(var i=0;i<12;i++){
+      var mStart = addMonths(start, i);
+      var mEnd = new Date(mStart.getFullYear(), mStart.getMonth()+1, 0);
+      var occs = collectOccurrences(mStart, mEnd);
+      var rev = sumByType(occs,"revenue");
+      var exp = sumByType(occs,"expense");
+      var net = rev-exp;
+      running += net;
+      var tr = document.createElement("tr");
+      tr.innerHTML = '<td>'+MONTH_LABELS[mStart.getMonth()]+' '+mStart.getFullYear()+'</td>'+
+        '<td class="num" style="color:var(--accent-dark)">'+fmtMoney(rev)+'</td>'+
+        '<td class="num" style="color:#8C332C">'+fmtMoney(exp)+'</td>'+
+        '<td class="num '+(net<0?'neg':'pos')+'">'+fmtMoney(net)+'</td>'+
+        '<td class="num '+(running<0?'neg':'pos')+'" style="font-weight:700;">'+fmtMoney(running)+'</td>';
+      tbody.appendChild(tr);
+    }
+  }
+
+  /* ============ rendering: settings ============ */
+  function renderSettings(){
+    document.getElementById("startingBalanceInput").value = currentData().startingBalance;
+    renderCatManage("revCatManage", "revenue");
+    renderCatManage("expCatManage", "expense");
+    renderBudgetManage();
+    populateWeekStartSelects();
+  }
+
+  function populateWeekStartSelects(){
+    var optionsHtml = WEEKDAY_FULL.map(function(name, idx){
+      return '<option value="'+idx+'">'+name+'</option>';
+    }).join("");
+    var current = currentData().weekStartDay;
+    ["weekStartSelect","weekStartQuickSelect"].forEach(function(id){
+      var sel = document.getElementById(id);
+      if(!sel) return;
+      sel.innerHTML = optionsHtml;
+      sel.value = String(current);
+    });
+  }
+
+  function setWeekStartDay(day){
+    currentData().weekStartDay = day;
+    saveState();
+    renderAll();
+    populateWeekStartSelects();
+  }
+
+  function renderBudgetManage(){
+    var host = document.getElementById("budgetManage");
+    var cats = currentData().categories.expense;
+    var budgets = currentData().budgets || {};
+    if(cats.length === 0){
+      host.innerHTML = '<div class="empty-note">Add an expense category first.</div>';
+      return;
+    }
+    host.innerHTML = cats.map(function(c){
+      var val = budgets[c] != null ? budgets[c] : "";
+      return '<div class="budget-row"><div class="b-name">'+escapeHtml(c)+'</div>'+
+        '<input type="number" min="0" step="1" placeholder="No cap" value="'+val+'" data-budget-cat="'+encodeURIComponent(c)+'"></div>';
+    }).join("");
+  }
+
+  function renderCatManage(hostId, type){
+    var host = document.getElementById(hostId);
+    var cats = currentData().categories[type];
+    var chips = cats.map(function(c){
+      return '<span class="cat-chip">'+escapeHtml(c)+'<button data-remove-cat="'+encodeURIComponent(c)+'" data-cat-type="'+type+'">✕</button></span>';
+    }).join("");
+    host.innerHTML = '<div class="cat-chip-row">'+chips+'</div>'+
+      '<div class="cat-add-row">'+
+        '<input type="text" placeholder="Add category…" data-cat-input="'+type+'">'+
+        '<button data-cat-add="'+type+'">Add</button>'+
+      '</div>';
+  }
+
+  /* ============ modal ============ */
+  function openDayModal(iso){
+    activeDayISO = iso;
+    var d = parseISO(iso);
+    var dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][d.getDay()];
+    document.getElementById("dayModalTitle").textContent = dayName+", "+MONTH_LABELS[d.getMonth()]+" "+d.getDate();
+    editingTxId = null;
+    renderExistingTx(iso);
+    setFormType("revenue");
+    setFormStatus("actual");
+    populateCategorySelect();
+    document.getElementById("txAmount").value = "";
+    document.getElementById("txNote").value = "";
+    document.getElementById("txRecurrence").value = "none";
+    document.getElementById("txRecurrenceEnd").value = "";
+    toggleRecurrenceEndVisibility();
+    resetEditUI();
+    document.getElementById("dayOverlay").classList.add("open");
+  }
+  function closeDayModal(){
+    document.getElementById("dayOverlay").classList.remove("open");
+    activeDayISO = null;
+    editingTxId = null;
+    resetEditUI();
+  }
+
+  function toggleRecurrenceEndVisibility(){
+    var recurs = document.getElementById("txRecurrence").value !== "none";
+    document.getElementById("recurrenceEndRow").style.display = recurs ? "block" : "none";
+  }
+
+  function resetEditUI(){
+    document.getElementById("txSaveBtn").textContent = "Add to calendar";
+    document.getElementById("cancelEditBtn").style.display = "none";
+    document.getElementById("editNotice").classList.remove("show");
+  }
+  function showEditUI(){
+    document.getElementById("txSaveBtn").textContent = "Update transaction";
+    document.getElementById("cancelEditBtn").style.display = "inline-block";
+    document.getElementById("editNotice").classList.add("show");
+  }
+
+  function renderExistingTx(iso){
+    var d = parseISO(iso);
+    var occs = collectOccurrences(d, d);
+    var host = document.getElementById("existingTxList");
+    if(occs.length === 0){
+      host.innerHTML = '<div class="empty-note">No entries yet for this date. Tap an entry below to edit it, or add a new one.</div>';
+      return;
+    }
+    host.innerHTML = "";
+    occs.forEach(function(o){
+      var tx = o.tx;
+      var row = document.createElement("div");
+      row.className = "existing-tx";
+      row.setAttribute("data-tx-id", tx.id);
+      var recTag = tx.recurrence && tx.recurrence !== "none" ? " · repeats "+tx.recurrence : "";
+      var plannedTag = tx.status === "planned" ? '<span class="tag planned" style="margin-left:6px;">Planned</span>' : "";
+      row.innerHTML =
+        '<div class="tx-info"><div class="tx-cat">'+escapeHtml(tx.category)+plannedTag+'</div>'+
+        '<div class="tx-note">'+escapeHtml(tx.note||"")+recTag+'</div></div>'+
+        '<div class="tx-right"><div class="tx-amt '+(tx.type==='revenue'?'rev':'exp')+' num">'+(tx.type==='revenue'?'+':'−')+fmtMoney(Math.abs(tx.amount))+'</div>'+
+        '<button class="tx-del" data-del-tx="'+tx.id+'">✕</button></div>';
+      host.appendChild(row);
+    });
+  }
+
+  function setFormType(type){
+    activeFormType = type;
+    document.getElementById("typeRevBtn").classList.toggle("active", type==="revenue");
+    document.getElementById("typeExpBtn").classList.toggle("active", type==="expense");
+    populateCategorySelect();
+  }
+
+  function setFormStatus(status){
+    activeFormStatus = status;
+    document.getElementById("statusActualBtn").classList.toggle("active", status==="actual");
+    document.getElementById("statusPlannedBtn").classList.toggle("active", status==="planned");
+  }
+
+  function populateCategorySelect(){
+    var sel = document.getElementById("txCategory");
+    var cats = currentData().categories[activeFormType];
+    sel.innerHTML = cats.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join("");
+  }
+
+  /* Load an existing transaction into the form so its fields — including recurrence — can be changed */
+  function startEditTx(id){
+    var tx = currentData().transactions.find(function(t){ return t.id === id && !t.deleted; });
+    if(!tx) return;
+    editingTxId = id;
+    setFormType(tx.type);
+    document.getElementById("txCategory").value = tx.category;
+    setFormStatus(tx.status || "actual");
+    document.getElementById("txAmount").value = tx.amount;
+    document.getElementById("txNote").value = tx.note || "";
+    document.getElementById("txRecurrence").value = tx.recurrence || "none";
+    document.getElementById("txRecurrenceEnd").value = tx.recurrenceEnd || "";
+    toggleRecurrenceEndVisibility();
+    showEditUI();
+    document.getElementById("txAmount").scrollIntoView({ behavior:"smooth", block:"center" });
+  }
+
+  function cancelEdit(){
+    editingTxId = null;
+    resetEditUI();
+    setFormType("revenue");
+    setFormStatus("actual");
+    document.getElementById("txAmount").value = "";
+    document.getElementById("txNote").value = "";
+    document.getElementById("txRecurrence").value = "none";
+    document.getElementById("txRecurrenceEnd").value = "";
+    toggleRecurrenceEndVisibility();
+  }
+
+  function saveTransaction(){
+    var amountRaw = document.getElementById("txAmount").value;
+    var amount = parseFloat(amountRaw);
+    if(!amount || amount <= 0){
+      document.getElementById("txAmount").focus();
+      return;
+    }
+    var recurrence = document.getElementById("txRecurrence").value;
+    var recurrenceEndRaw = document.getElementById("txRecurrenceEnd").value;
+    var recurrenceEnd = (recurrence !== "none" && recurrenceEndRaw) ? recurrenceEndRaw : null;
+    var category = document.getElementById("txCategory").value;
+    var note = document.getElementById("txNote").value.trim();
+
+    if(editingTxId){
+      var existing = currentData().transactions.find(function(t){ return t.id === editingTxId; });
+      if(existing){
+        existing.type = activeFormType;
+        existing.category = category;
+        existing.amount = amount;
+        existing.note = note;
+        existing.recurrence = recurrence;
+        existing.recurrenceEnd = recurrenceEnd;
+        existing.status = activeFormStatus;
+      }
+      editingTxId = null;
+      resetEditUI();
+    } else {
+      var tx = {
+        id: "tx_" + Date.now() + "_" + Math.floor(Math.random()*10000),
+        date: activeDayISO,
+        type: activeFormType,
+        category: category,
+        amount: amount,
+        note: note,
+        recurrence: recurrence,
+        recurrenceEnd: recurrenceEnd,
+        status: activeFormStatus,
+        deleted: false
+      };
+      currentData().transactions.push(tx);
+    }
+    saveState();
+    renderExistingTx(activeDayISO);
+    document.getElementById("txAmount").value = "";
+    document.getElementById("txNote").value = "";
+    document.getElementById("txRecurrence").value = "none";
+    document.getElementById("txRecurrenceEnd").value = "";
+    toggleRecurrenceEndVisibility();
+    renderAll();
+  }
+
+  function deleteTransaction(id, afterDelete){
+    var tx = currentData().transactions.find(function(t){ return t.id === id; });
+    if(!tx) return;
+    tx.deleted = true;
+    saveState();
+    if(afterDelete) afterDelete(); else { renderExistingTx(activeDayISO); }
+    renderAll();
+    showUndoToast(tx);
+  }
+
+  function showUndoToast(tx){
+    if(pendingDelete && pendingDelete.timeoutId) clearTimeout(pendingDelete.timeoutId);
+    pendingDelete = { tx: tx };
+    var toast = document.getElementById("toast");
+    document.getElementById("toastMsg").textContent = "Deleted \u201c"+tx.category+"\u201d";
+    toast.classList.add("show");
+    pendingDelete.timeoutId = setTimeout(function(){
+      // finalize: physically remove any entries flagged deleted
+      currentData().transactions = currentData().transactions.filter(function(t){ return !t.deleted; });
+      saveState();
+      toast.classList.remove("show");
+      pendingDelete = null;
+    }, 6000);
+  }
+
+  function undoDelete(){
+    if(!pendingDelete) return;
+    clearTimeout(pendingDelete.timeoutId);
+    pendingDelete.tx.deleted = false;
+    saveState();
+    document.getElementById("toast").classList.remove("show");
+    pendingDelete = null;
+    renderAll();
+    if(activeDayISO) renderExistingTx(activeDayISO);
+    if(document.querySelector(".tab-btn.active").getAttribute("data-view") === "transactions") renderTransactionsView();
+  }
+
+  /* ============ All Transactions: search & filter ============ */
+  function getFilteredTransactionList(){
+    var q = (document.getElementById("txSearchInput").value || "").trim().toLowerCase();
+    var typeVal = document.getElementById("txSearchType").value;
+    var statusVal = document.getElementById("txSearchStatus").value;
+    return currentData().transactions.filter(function(t){
+      if(t.deleted) return false;
+      if(typeVal !== "all" && t.type !== typeVal) return false;
+      if(statusVal !== "all" && t.status !== statusVal) return false;
+      if(q){
+        var hay = (t.category+" "+(t.note||"")).toLowerCase();
+        if(hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    }).sort(function(a,b){ return a.date < b.date ? 1 : -1; });
+  }
+
+  function renderTransactionsView(){
+    var list = getFilteredTransactionList();
+    var host = document.getElementById("txSearchList");
+    if(list.length === 0){
+      host.innerHTML = '<div class="empty-note" style="padding:16px 18px;">No transactions match this search.</div>';
+      return;
+    }
+    host.innerHTML = "";
+    list.forEach(function(tx){
+      var d = parseISO(tx.date);
+      var dateLbl = MONTH_LABELS[d.getMonth()].slice(0,3)+" "+d.getDate()+", "+d.getFullYear();
+      var tags = "";
+      if(tx.status === "planned") tags += '<span class="tag planned">Planned</span>';
+      if(tx.recurrence && tx.recurrence !== "none") tags += '<span class="tag recurring">'+tx.recurrence+'</span>';
+      var row = document.createElement("div");
+      row.className = "tx-list-row";
+      row.setAttribute("data-tx-id", tx.id);
+      row.setAttribute("data-tx-date", tx.date);
+      row.innerHTML =
+        '<div class="tx-list-left">'+
+          '<div class="tx-list-date">'+dateLbl+'</div>'+
+          '<div class="tx-list-cat">'+escapeHtml(tx.category)+'</div>'+
+          (tx.note ? '<div class="tx-list-note">'+escapeHtml(tx.note)+'</div>' : '')+
+        '</div>'+
+        '<div class="tx-list-right">'+tags+
+          '<div class="tx-amt '+(tx.type==='revenue'?'rev':'exp')+' num">'+(tx.type==='revenue'?'+':'−')+fmtMoney(tx.amount)+'</div>'+
+          '<button class="tx-del" data-del-search-tx="'+tx.id+'">✕</button>'+
+        '</div>';
+      host.appendChild(row);
+    });
+  }
+
+  /* ============ CSV export ============ */
+  function csvEscape(v){
+    var s = String(v==null?"":v);
+    if(/[",\n]/.test(s)) s = '"' + s.replace(/"/g,'""') + '"';
+    return s;
+  }
+  function downloadCSV(filename, rows){
+    var csv = rows.map(function(r){ return r.map(csvEscape).join(","); }).join("\r\n");
+    var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function exportOccurrencesCSV(filename, rangeStart, rangeEnd){
+    var occs = collectOccurrences(rangeStart, rangeEnd);
+    occs.sort(function(a,b){ return a.date - b.date; });
+    var rows = [["Date","Type","Category","Amount","Status","Note","Recurrence","Recurrence Ends"]];
+    occs.forEach(function(o){
+      rows.push([isoDate(o.date), o.tx.type, o.tx.category, o.tx.amount.toFixed(2), o.tx.status, o.tx.note||"", o.tx.recurrence||"none", o.tx.recurrenceEnd||""]);
+    });
+    downloadCSV(filename, rows);
+  }
+
+  function exportRawTransactionsCSV(filename, list){
+    var rows = [["Anchor Date","Type","Category","Amount","Status","Note","Recurrence","Recurrence Ends"]];
+    list.forEach(function(t){
+      rows.push([t.date, t.type, t.category, t.amount.toFixed(2), t.status, t.note||"", t.recurrence||"none", t.recurrenceEnd||""]);
+    });
+    downloadCSV(filename, rows);
+  }
+
+  /* ============ events ============ */
+  function wireEvents(){
+    document.getElementById("modeToggle").addEventListener("click", function(e){
+      var btn = e.target.closest("button[data-mode]");
+      if(!btn) return;
+      mode = btn.getAttribute("data-mode");
+      applyMode();
+    });
+
+    document.querySelectorAll(".tab-btn").forEach(function(b){
+      b.addEventListener("click", function(){ switchView(b.getAttribute("data-view")); });
+    });
+
+    document.getElementById("prevMonth").addEventListener("click", function(){
+      viewMonth = addMonths(viewMonth,-1); renderAll();
+    });
+    document.getElementById("nextMonth").addEventListener("click", function(){
+      viewMonth = addMonths(viewMonth,1); renderAll();
+    });
+    document.getElementById("todayBtn").addEventListener("click", function(){
+      viewMonth = new Date(); viewMonth.setDate(1); renderAll();
+    });
+
+    document.getElementById("calGrid").addEventListener("click", function(e){
+      var cell = e.target.closest(".day-cell");
+      if(!cell) return;
+      openDayModal(cell.getAttribute("data-date"));
+    });
+
+    document.getElementById("weekRows").addEventListener("click", function(e){
+      var toggle = e.target.closest("[data-week-toggle]");
+      if(!toggle) return;
+      var key = toggle.getAttribute("data-week-toggle");
+      expandedWeekKeys[key] = !expandedWeekKeys[key];
+      var detail = document.getElementById("weekDetail-"+key);
+      var chevron = toggle.querySelector(".week-chevron");
+      if(detail) detail.classList.toggle("open", !!expandedWeekKeys[key]);
+      if(chevron) chevron.classList.toggle("open", !!expandedWeekKeys[key]);
+    });
+
+    document.getElementById("dayModalClose").addEventListener("click", closeDayModal);
+    document.getElementById("dayOverlay").addEventListener("click", function(e){
+      if(e.target.id === "dayOverlay") closeDayModal();
+    });
+
+    document.getElementById("typeRevBtn").addEventListener("click", function(){ setFormType("revenue"); });
+    document.getElementById("typeExpBtn").addEventListener("click", function(){ setFormType("expense"); });
+    document.getElementById("statusActualBtn").addEventListener("click", function(){ setFormStatus("actual"); });
+    document.getElementById("statusPlannedBtn").addEventListener("click", function(){ setFormStatus("planned"); });
+    document.getElementById("txRecurrence").addEventListener("change", toggleRecurrenceEndVisibility);
+    document.getElementById("cancelEditBtn").addEventListener("click", cancelEdit);
+
+    document.getElementById("txSaveBtn").addEventListener("click", saveTransaction);
+
+    document.getElementById("existingTxList").addEventListener("click", function(e){
+      var delBtn = e.target.closest("button[data-del-tx]");
+      if(delBtn){
+        deleteTransaction(delBtn.getAttribute("data-del-tx"));
+        return;
+      }
+      var row = e.target.closest(".existing-tx[data-tx-id]");
+      if(row){
+        startEditTx(row.getAttribute("data-tx-id"));
+      }
+    });
+
+    document.getElementById("toastUndoBtn").addEventListener("click", undoDelete);
+
+    document.getElementById("statusFilter").addEventListener("click", function(e){
+      var btn = e.target.closest("button[data-status]");
+      if(!btn) return;
+      statusFilterVal = btn.getAttribute("data-status");
+      document.querySelectorAll("#statusFilter button").forEach(function(b){
+        b.classList.toggle("active", b === btn);
+      });
+      renderAll();
+    });
+
+    document.getElementById("aiInsightBtn").addEventListener("click", generateAIInsight);
+
+    document.getElementById("saveBalanceBtn").addEventListener("click", function(){
+      var v = parseFloat(document.getElementById("startingBalanceInput").value);
+      currentData().startingBalance = isNaN(v) ? 0 : v;
+      saveState();
+      renderAll();
+    });
+
+    document.getElementById("weekStartSelect").addEventListener("change", function(e){
+      setWeekStartDay(parseInt(e.target.value, 10));
+    });
+    document.getElementById("weekStartQuickSelect").addEventListener("change", function(e){
+      setWeekStartDay(parseInt(e.target.value, 10));
+    });
+
+    document.getElementById("view-settings").addEventListener("click", function(e){
+      var addBtn = e.target.closest("button[data-cat-add]");
+      if(addBtn){
+        var type = addBtn.getAttribute("data-cat-add");
+        var input = document.querySelector('input[data-cat-input="'+type+'"]');
+        var val = input.value.trim();
+        if(val && currentData().categories[type].indexOf(val) === -1){
+          currentData().categories[type].push(val);
+          saveState();
+          renderSettings();
+        }
+        return;
+      }
+      var rmBtn = e.target.closest("button[data-remove-cat]");
+      if(rmBtn){
+        var t = rmBtn.getAttribute("data-cat-type");
+        var name = decodeURIComponent(rmBtn.getAttribute("data-remove-cat"));
+        currentData().categories[t] = currentData().categories[t].filter(function(c){ return c !== name; });
+        saveState();
+        renderSettings();
+      }
+    });
+
+    document.getElementById("view-settings").addEventListener("keydown", function(e){
+      if(e.key === "Enter" && e.target.matches("input[data-cat-input]")){
+        var type = e.target.getAttribute("data-cat-input");
+        var val = e.target.value.trim();
+        if(val && currentData().categories[type].indexOf(val) === -1){
+          currentData().categories[type].push(val);
+          saveState();
+          renderSettings();
+        }
+      }
+      if(e.key === "Enter" && e.target.matches("input[data-budget-cat]")){
+        e.target.blur();
+      }
+    });
+
+    document.getElementById("budgetManage").addEventListener("change", function(e){
+      var input = e.target.closest("input[data-budget-cat]");
+      if(!input) return;
+      var cat = decodeURIComponent(input.getAttribute("data-budget-cat"));
+      var v = parseFloat(input.value);
+      if(!currentData().budgets) currentData().budgets = {};
+      if(isNaN(v) || v <= 0){
+        delete currentData().budgets[cat];
+      } else {
+        currentData().budgets[cat] = v;
+      }
+      saveState();
+    });
+
+    document.getElementById("exportMonthBtn").addEventListener("click", function(){
+      var monthStart = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1);
+      var monthEnd = new Date(viewMonth.getFullYear(), viewMonth.getMonth()+1, 0);
+      var name = "ledgerline-"+mode+"-"+MONTH_LABELS[viewMonth.getMonth()].toLowerCase()+"-"+viewMonth.getFullYear()+".csv";
+      exportOccurrencesCSV(name, monthStart, monthEnd);
+    });
+
+    document.getElementById("exportAllBtn").addEventListener("click", function(){
+      var list = currentData().transactions.filter(function(t){ return !t.deleted; });
+      exportRawTransactionsCSV("ledgerline-"+mode+"-all-transactions.csv", list);
+    });
+
+    document.getElementById("exportSearchBtn").addEventListener("click", function(){
+      var list = getFilteredTransactionList();
+      exportRawTransactionsCSV("ledgerline-"+mode+"-filtered.csv", list);
+    });
+
+    ["txSearchInput","txSearchType","txSearchStatus"].forEach(function(id){
+      var el = document.getElementById(id);
+      el.addEventListener("input", renderTransactionsView);
+      el.addEventListener("change", renderTransactionsView);
+    });
+
+    document.getElementById("txSearchList").addEventListener("click", function(e){
+      var delBtn = e.target.closest("button[data-del-search-tx]");
+      if(delBtn){
+        deleteTransaction(delBtn.getAttribute("data-del-search-tx"), renderTransactionsView);
+        return;
+      }
+      var row = e.target.closest(".tx-list-row[data-tx-id]");
+      if(row){
+        openDayModal(row.getAttribute("data-tx-date"));
+        startEditTx(row.getAttribute("data-tx-id"));
+      }
+    });
+
+    /* ---- Add to phone (PWA install) ---- */
+    window.addEventListener("beforeinstallprompt", function(e){
+      e.preventDefault();
+      deferredInstallPrompt = e;
+    });
+
+    document.getElementById("installBtn").addEventListener("click", async function(){
+      if(deferredInstallPrompt){
+        deferredInstallPrompt.prompt();
+        try{ await deferredInstallPrompt.userChoice; }catch(e){}
+        deferredInstallPrompt = null;
+        return;
+      }
+      showInstallInstructions();
+    });
+    document.getElementById("installModalClose").addEventListener("click", function(){
+      document.getElementById("installOverlay").classList.remove("open");
+    });
+    document.getElementById("installOverlay").addEventListener("click", function(e){
+      if(e.target.id === "installOverlay") document.getElementById("installOverlay").classList.remove("open");
+    });
+  }
+
+  function showInstallInstructions(){
+    var ua = navigator.userAgent || "";
+    var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    var isAndroid = /Android/.test(ua);
+    var body = document.getElementById("installModalBody");
+    var html = "";
+    if(isIOS){
+      html = "<p style='font-size:13.5px;line-height:1.7;'>In Safari, tap the <b>Share</b> icon (the square with an arrow) at the bottom of the screen, then scroll down and tap <b>Add to Home Screen</b>. Ledgerline will open full-screen, like an app, from your home screen icon.</p>";
+    } else if(isAndroid){
+      html = "<p style='font-size:13.5px;line-height:1.7;'>Tap the <b>⋮</b> menu in Chrome, then choose <b>Add to Home screen</b> (or <b>Install app</b> if you see it). If you don't see that option, this page needs to be hosted online (e.g. GitHub Pages, Netlify) rather than opened as a local file, for Chrome to offer a full install.</p>";
+    } else {
+      html = "<p style='font-size:13.5px;line-height:1.7;'>Open this page in Chrome or Edge and look for an <b>Install</b> icon in the address bar, or use the browser menu and choose <b>Install Ledgerline…</b>. On a phone, open this same link in your mobile browser and use <b>Add to Home Screen</b> from the share or menu button.</p>"+
+        "<p style='font-size:12px;color:var(--text-faint);margin-top:10px;'>Note: install prompts only appear when a page is hosted online over HTTPS — if you're viewing this as a downloaded local file, upload it somewhere like GitHub Pages or Netlify first.</p>";
+    }
+    body.innerHTML = html;
+    document.getElementById("installOverlay").classList.add("open");
+  }
+
+  /* ============ boot ============ */
+  async function boot(){
+    await loadState();
+    wireEvents();
+    applyMode();
+  }
+  boot();
+
+})();
+</script>
+</body>
+</html>
